@@ -1,6 +1,26 @@
 from pydantic import BaseModel
 from datetime import date, datetime
 
+class UserCreate(BaseModel):
+    username: str
+    email: str
+    password: str
+
+class UserLogin(BaseModel):
+    username: str
+    password: str
+
+class MenuItemCreate(BaseModel):
+    title: str
+    order: int
+    language: str = "uz"
+
+class MenuItemOut(MenuItemCreate):
+    id: int
+
+    class Config:
+        from_attributes = True 
+
 class DocumentCreate(BaseModel):
     title: str
     category: str
